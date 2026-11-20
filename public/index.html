@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#142B43">
+    <meta name="description" content="Create memorable links with brief, a URL shortener with custom 4–5-character aliases and total click counts. Visitors see a five-second countdown.">
+    <title>URL Shortener — Custom Short Links | brief</title>
+    <link rel="canonical" href="https://brief-links-roy.leggeth069.workers.dev/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="/" aria-label="brief home">brief<span aria-hidden="true">↗</span></a>
+      <span class="header-note">LESS LINK. MORE POSSIBILITY.</span>
+      <a class="header-link" href="#your-links">Your links <span aria-hidden="true">↙</span></a>
+    </header>
+
+    <main id="main" class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="square" aria-hidden="true"></span> SMALL LINKS, BIG IDEAS</p>
+          <h1 id="hero-title">URL shortener.<br>Made <span class="underlined">brief.</span></h1>
+          <p class="hero-description">Create a memorable link with a generated five-letter name or a custom alias of 4–5 letters or numbers. See total click counts without an account.</p>
+          <div class="hero-end"><span class="big-arrow" aria-hidden="true">↳</span><span>A SHORT LINK.<br>A FIVE-SECOND HELLO.</span></div>
+        </div>
+
+        <div class="shorten-card">
+          <div class="card-heading"><span class="eyebrow">MAKE IT SHORT</span><span aria-hidden="true">01 / ↗</span></div>
+          <form id="shorten-form">
+            <label for="destination">Your long link</label>
+            <input id="destination" name="url" type="url" inputmode="url" placeholder="https://example.com/something-great" required maxlength="4096" autocomplete="url" aria-describedby="url-hint form-message">
+            <p class="field-hint" id="url-hint">Start with https:// or http://</p>
+
+            <label class="alias-label" for="alias">Your word <span>(optional)</span></label>
+            <div class="alias-field"><span aria-hidden="true">/</span><input id="alias" name="alias" type="text" placeholder="hello" minlength="4" maxlength="5" pattern="[a-zA-Z0-9]{4,5}" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="alias-hint form-message"></div>
+            <p class="field-hint" id="alias-hint">Choose 4–5 letters or numbers, or leave blank for a five-letter name.</p>
+            <button class="button primary" id="submit-button" type="submit" disabled><span>Shorten link</span><span aria-hidden="true">↗</span></button>
+            <p class="form-message" id="form-message" role="status" aria-live="polite">Getting your links ready…</p>
+          </form>
+
+          <section class="result" id="result" aria-label="Your new short link" hidden>
+            <p class="eyebrow">SHORT, SWEET, READY TO SHARE.</p>
+            <a id="result-url" target="_blank" rel="noopener noreferrer"></a>
+            <button class="button" id="copy-result" type="button">Copy link <span aria-hidden="true">⧉</span></button>
+          </section>
+          <p class="card-footnote">Visitors see brief for 5 seconds, then continue to your destination.</p>
+        </div>
+      </section>
+
+      <section class="how-to" aria-labelledby="how-to-title">
+        <p class="eyebrow">A FEW SIMPLE STEPS</p>
+        <h2 id="how-to-title">How to shorten a link.</h2>
+        <ol>
+          <li>Paste an HTTP or HTTPS link into the form.</li>
+          <li>Optionally choose a word of 4–5 letters or numbers, or leave it blank for a generated five-letter name.</li>
+          <li>Select “Shorten link”, then copy and share your new link.</li>
+        </ol>
+        <p>Visitors see a five-second brief countdown before continuing to the destination; they can pause it or continue manually. Manage your latest 100 links and see total click counts for each link in the same browser using its cookies.</p>
+      </section>
+
+      <section class="links-section" id="your-links" aria-labelledby="links-title">
+        <div class="section-top">
+          <div><p class="eyebrow">A LITTLE LESS TO REMEMBER</p><h2 id="links-title">Your links.</h2></div>
+          <div class="section-actions"><span class="link-summary" id="link-summary">— links / — clicks</span><button class="text-button" type="button" id="refresh-button" aria-label="Refresh links and click counts">Refresh ↻</button></div>
+        </div>
+        <div id="link-list" class="link-list" aria-live="polite" aria-busy="true"><p class="empty-state">Loading your links…</p></div>
+        <p class="history-note">Your latest 100 links live here, in this browser. Keep its cookies to manage them. Short links work for everyone.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap"><a class="wordmark" href="/">brief<span aria-hidden="true">↗</span></a><span>A LITTLE SHORTER. A LOT SIMPLER.</span><a href="#main">Back to top ↑</a></footer>
+    <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+
+    <dialog id="delete-dialog" aria-labelledby="delete-title" aria-describedby="delete-description">
+      <h2 id="delete-title">Remove this link?</h2>
+      <p id="delete-description">The short link will stop working for everyone.</p>
+      <p id="delete-name" class="delete-name"></p>
+      <p id="delete-error" role="status" aria-live="polite"></p>
+      <div class="dialog-actions"><button class="button" id="cancel-delete" type="button">Keep link</button><button class="button primary" id="confirm-delete" type="button">Remove link</button></div>
+    </dialog>
+  </body>
+</html>

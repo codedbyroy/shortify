@@ -1,0 +1,9 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "nvux",
+  "pages_build_output_dir": "./public",
+  "compatibility_date": "2026-11-17",
+  "services": [
+    { "binding": "SHORTIFY", "service": "brief-links-roy" }
+  ]
+}
